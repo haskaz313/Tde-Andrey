@@ -28,31 +28,65 @@ Todas as implementações foram feitas em Java, sem utilização de funções pr
 Os testes foram realizados com os três vetores propostos, e os resultados foram registrados considerando o número de trocas e de iterações realizadas por cada algoritmo.
 
 # Resultados – Vetor 1 (Desordenado Aleatoriamente)
-Posição	Algoritmo	Trocas	Iterações
-1	Comb Sort	Poucas	Poucas
-2	Cocktail Sort	Média	Média
-3	Gnome Sort	Alta	Alta
-4	Selection Sort	Média	Alta
-5	Bubble Sort Flag	Alta	Alta
-6	Bucket Sort	Variável (depende da distribuição)	Média
+=== VETOR 1 ===
+Algoritmo       Trocas          Iterações      
+BubbleSort flag 78              180            
+SelectionSort   18              190            
+CocktailSort    78              154            
+CombSort        22              129            
+GnomeSort       78              176            
+BucketSort      19              39   
 
 # Resultados – Vetor 2 (Já Ordenado)
-Posição	Algoritmo	Trocas	Iterações
-1	Bubble Sort Flag	0 trocas	Poucas iterações (encerra cedo)
-2	Cocktail Sort	0 trocas	Média
-3	Comb Sort	0 trocas	Média
-4	Selection Sort	Nenhuma troca, mas muitas comparações	Alta
-5	Gnome Sort	Média	Alta
-6	Bucket Sort	Boa, mas com overhead de distribuição	Média
+=== VETOR 2 ===
+Algoritmo       Trocas          Iterações      
+BubbleSort flag 0               19             
+SelectionSort   0               190            
+CocktailSort    0               19             
+CombSort        0               110            
+GnomeSort       0               20             
+BucketSort      0               20      
 
 # Resultados – Vetor 3 (Invertido)
-Posição	Algoritmo	Trocas	Iterações
-1	Comb Sort	Melhor eficiência geral	Menos iterações
-2	Cocktail Sort	Média	Média
-3	Bucket Sort	Boa	Média
-4	Selection Sort	Média	Alta
-5	Bubble Sort Flag	Alta	Alta
-6	Gnome Sort	Muito ruim neste caso	Muitas iterações
+=== VETOR 3 ===
+Algoritmo       Trocas          Iterações      
+BubbleSort flag 190             190            
+SelectionSort   10              190            
+CocktailSort    190             190            
+CombSort        18              129            
+GnomeSort       190             400            
+BucketSort      63              83     
+# Ranking Geral – Desempenho dos Algoritmos de Ordenação
+
+## Cálculo
+O ranking abaixo foi obtido somando o total de **trocas** e **iterações** realizadas por cada algoritmo nos três vetores de teste.  
+Quanto menor o valor total, melhor o desempenho geral do algoritmo.
+
+---
+
+## Soma Total (Trocas + Iterações)
+
+| Posição | Algoritmo        | Total Trocas | Total Iterações | Soma Geral |
+|----------|------------------|---------------|------------------|-------------|
+| 1 | **Bucket Sort**      | 82  | 142 | **224** |
+| 2 | **Comb Sort**        | 40  | 368 | **408** |
+| 3 | **Cocktail Sort**    | 268 | 363 | **631** |
+| 4 | **Bubble Sort Flag** | 268 | 389 | **657** |
+| 5 | **Selection Sort**   | 28  | 570 | **598** |
+| 6 | **Gnome Sort**       | 268 | 596 | **864** |
+
+---
+
+## Ranking Final
+
+| Classificação | Algoritmo | Desempenho Geral |
+|----------------|------------|------------------|
+| 1º | Bucket Sort | Melhor resultado geral (menor soma total) |
+| 2º | Comb Sort | Equilíbrio entre trocas e iterações |
+| 3º | Cocktail Sort | Desempenho razoável, mas mais custoso |
+| 4º | Bubble Sort Flag | Bom em vetores ordenados, mas fraco em outros |
+| 5º | Selection Sort | Poucas trocas, mas muitas iterações |
+| 6º | Gnome Sort | Pior desempenho geral, principalmente em vetores invertidos |
 
 # Conclusao
 De modo geral, o algoritmo Comb Sort apresentou o melhor equilíbrio entre trocas e iterações, superando os demais na maioria dos cenários.
